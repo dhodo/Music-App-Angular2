@@ -1,0 +1,23 @@
+<div class="main" > 
+    
+        <div classs="content" *ngIf="album">
+          <div class="fab"  (click)="back()">
+            <i class="ion-arrow-left-c icon icon-small"></i>
+          </div>
+          <div class="heading" >
+            <h1>{{ album.name }}</h1>
+          </div>
+            <h2 class="heading">{{ album.artists[0].name }}</h2>
+            
+            <div class="collection z-depth-2" style="background-image:linear-gradient(rgba(255,255,255,0.9),rgba(255,255,255,0.95)), url( {{ album.images[0].url }} )" >
+               <a class="collection-item blue"><h3 class="white-text">Tracks</h3></a>
+               <div *ngFor="#t of album.tracks.items" >
+                <a class="collection-item" [routerLink]="['/Tracks', {id: t.id}]">
+                  {{ t.name }}
+                </a>
+                </div>
+            </div>
+
+        </div>
+    
+</div>

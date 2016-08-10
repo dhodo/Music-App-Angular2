@@ -1,0 +1,84 @@
+<div class="main" > 
+    <div class="content">
+        <div class="row center heading" *ngIf="query"  >
+            <h1> {{ query }} </h1>
+        </div>
+        <div class="row center heading" *ngIf="! query"  >
+            <h1> Search a Song </h1>
+        </div>
+        <div class="container" >
+            <div class="row " >
+                <div *ngIf="results">
+                        <div *ngIf="!results.length">
+                        <p> No tracks were found with the term '{{ query }}'</p>
+                        </div>
+
+                        <div *ngIf="results.length">
+                            <div class="col-sm-6 col-md-4" *ngFor="#t of results">
+                                <div class="thumbnail card" >
+                                    <div class="content">
+                                        <img src="{{ t.album.images[0].url }}" class="img-responsive">
+                                        <div class="caption">
+                                           <span> <p class="white-text">
+                                               Track : <a [routerLink]="['Tracks', {id: t.id}]">
+                                                   <i> {{ t.name }}</i>
+                                                </a>
+                                            </p>
+                                           </span>
+                                           <span>
+                                            <p class="white-text" >By : 
+                                                 <a [routerLink]="['Artists', {id: t.artists[0].id}]">
+                                                {{ t.artists[0].name }}
+                                                </a>
+                                            </p>
+                                            </span>
+                                        </div>
+                                        
+                                       
+                                    </div>
+                                     <div class="attribution">
+                                            <h4><span>
+                                                <a [routerLink]="['Albums', {id: t.album.id}]">
+                                                {{ t.album.name }}
+                                                </a>
+                                                </span>
+                                            </h4>
+                                        </div>
+                                    
+                                </div>
+                            </div>
+
+
+                        </div>
+                </div>
+            </div>          
+        </div>
+                
+        <div class="fab" (click)="searchreq()" >
+            <i class="ion-ios-search-strong icon icon-small " ></i>
+        </div>
+    </div>
+</div>
+<div class="search" *ngIf="searchRequired">
+    <div class="row search-input center "> 
+        <div class="col-md-10  " >
+        
+            <input type="text" class="form-input" placeholder="Search Music"  #newquery [(value)]="query"
+            (keydown.enter)="submit(newquery.value)" autofocus >
+            
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-primary btn-block" (click)="submit(newquery.value);searchRequired=false;"  >Go!</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+ 
+
+
+
+ 

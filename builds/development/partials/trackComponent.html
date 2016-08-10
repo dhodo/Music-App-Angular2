@@ -1,0 +1,18 @@
+<div class="main" > 
+        <div classs="content" *ngIf="track">
+            <div class="fab"  (click)="back()">
+                <i class="ion-arrow-left-c icon icon-small"></i>
+            </div>
+
+            <div class="heading" >
+              <h1>{{ track.name }}</h1>
+            </div>
+            <div class="heading" >
+                  <div class="row" >
+                              <img class="thumbnail img-responsive center  " src= "{{ track.album.images[1].url }}">
+                              <audio id="audio" src="{{ track.preview_url }}" controls="controls"  ></audio>    
+                  </div>
+            </div>    
+        </div>
+</div>
+

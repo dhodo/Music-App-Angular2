@@ -1,0 +1,22 @@
+
+<div class="main" *ngIf="artist"> 
+    
+        <div classs="content" 
+        style="background-image:linear-gradient(rgba(255,255,255,0.7),rgba(255,255,255,0.7)), url( {{ artist.images[0].url }} )" >
+        
+        <div class="fab"  (click)="back()">
+            <i class="ion-arrow-left-c icon icon-small"></i>
+        </div>
+        <div class="heading" >
+            <h1>{{ artist.name }}</h1>
+          </div> 
+        <div class="row center" >
+            <div class="col-md-5">
+                
+                  <img class="thumbnail img-responsive card" src="{{ artist.images[1].url }}">
+                
+            </div>
+        </div>
+          
+  </div>
+</div>
